@@ -1,0 +1,39 @@
+\documentclass{bmstu}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+% \usepackage[russian]{babel}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{geometry}
+
+
+% Отключаем растягивание шрифтов
+\microtypesetup{expansion=false}
+
+\bibliography{biblio}
+
+\begin{document}
+
+\makereporttitle
+    {Информатика, искусственный интеллект и системы управления} % Название факультета
+    {Программное обеспечение ЭВМ и информационные технологии} % Название кафедры
+    {лабораторной работе №~1} % Название работы (в дат. падеже)
+    {Основы искусственного интеллекта} % Название курса (необязательный аргумент)
+    {Тестовый тест} % Тема работы
+    {} % Номер варианта (необязательный аргумент)
+    {Орду~М.~А./ИУ7-13М} % Номер группы/ФИО студента (если авторов несколько, их необходимо разделить запятой)
+    {Строганов~Ю.~В.} % ФИО преподавателя
+
+\maketableofcontents
+
+
+\include{01-theoretical}
+
+\include{02-practical}
+
+\include{03-appendix}
+
+\end{document}
