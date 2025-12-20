@@ -85,12 +85,12 @@ try:
     print("=" * 70)
     
     # Настройки для Tesseract
-    custom_config = r'--oem 3 --psm 6 -c preserve_interword_spaces=1'
+    # custom_config = r'--oem 3 --psm 6 -c preserve_interword_spaces=1'
     
     # Распознаем текст
     text = pytesseract.image_to_string(processed_img, 
-                                      lang='rus', 
-                                      config=custom_config)
+                                      lang='rus')
+                                    #   config=custom_config)
     
     # Выводим результаты
     print("\nРЕЗУЛЬТАТ РАСПОЗНАВАНИЯ:")
