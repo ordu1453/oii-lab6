@@ -9,17 +9,10 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\
 # путь к изображению
 IMAGE_PATH = "1/1_8.png"
 
-def crop_by_marks(image, offset=-60):
+def crop_by_marks(image, offset=0):
     """
     Обрезает изображение, удаляя верхнюю левую метку позиционирования.
-    
-    Args:
-        image: исходное изображение
-        offset: дополнительный отступ после обрезки
-        
-    Returns:
-        cropped_image: обрезанное изображение
-        mark_coords: координаты найденной метки (x, y, w, h)
+    Метка - это Х в кружке.
     """
     # Создаем копию изображения
     original = image.copy()
@@ -28,63 +21,109 @@ def crop_by_marks(image, offset=-60):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     h, w = gray.shape
     
-    # Бинаризуем изображение (инвертируем для поиска темных меток на светлом фоне)
-    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-    cv2.imshow("binary", binary)
+    # Показываем оригинальное изображение
+    cv2.imshow("Original", image)
+    
+    # Бинаризуем изображение
+    # Попробуем разные методы бинаризации
+    _, binary1 = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    
+    # Альтернатива: адаптивная бинаризация
+    binary2 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+                                   cv2.THRESH_BINARY_INV, 11, 2)
+    
+    # Показываем оба варианта бинаризации
+    cv2.imshow("Binary Otsu", binary1)
+    cv2.imshow("Binary Adaptive", binary2)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    
+    # Используем адаптивную бинаризацию (обычно лучше для неравномерного освещения)
+    binary = binary1
+    
     # Находим контуры
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     marks = []
-
+    
     for cnt in contours:
         x, y, cw, ch = cv2.boundingRect(cnt)
         area = cv2.contourArea(cnt)
         
-        # Фильтр по размеру (подбирается под размер ваших меток)
-        if 5 < area < 1000:
-            marks.append((x, y, cw, ch))
+        # Пропускаем слишком маленькие или слишком большие объекты
+        if area < 50 or area > 3000:
+            continue
+            
+        # Вычисляем дополнительные характеристики формы
+        perimeter = cv2.arcLength(cnt, True)
+        
+        # Пропускаем объекты с очень маленьким периметром
+        if perimeter < 20:
+            continue
+            
+        # Компактность (отношение площади к площади bounding box)
+        bbox_area = cw * ch
+        compactness = area / bbox_area if bbox_area > 0 else 0
+        
+        # Отношение сторон
+        aspect_ratio = cw / ch if ch > 0 else 0
+        
+        # Круглость (для круга = 1, для других форм меньше)
+        circularity = (4 * np.pi * area) / (perimeter * perimeter) if perimeter > 0 else 0
+        
+        print(f"Объект: x={x}, y={y}, w={cw}, h={ch}, area={area:.1f}, "
+              f"compact={compactness:.2f}, aspect={aspect_ratio:.2f}, "
+              f"circ={circularity:.2f}")
+        
+        # Критерии для метки "Х в кружке":
+        # 1. Компактность не слишком малая (не тонкая линия)
+        # 2. Отношение сторон близко к 1 (квадрат/круг)
+        # 3. Размер в разумных пределах
+        if (0.3 < compactness < 0.9 and 
+            0.5 < aspect_ratio < 2.0 and
+            100 < area < 2000):
+            marks.append((x, y, cw, ch, area, circularity))
     
     if not marks:
         print("Метки не найдены, возвращаю оригинальное изображение")
         return original, []
     
-    # Сортируем метки для поиска верхней левой
-    # Сначала по y (верхняя), затем по x (левая)
+    # Сортируем по положению (верхний левый угол)
     marks.sort(key=lambda m: (m[1], m[0]))
+    
+    # Отображаем все найденные кандидаты
+    debug_img = image.copy()
+    for i, (x, y, w, h, area, circ) in enumerate(marks):
+        cv2.rectangle(debug_img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.putText(debug_img, f"{i}", (x, y-5), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+    
+    cv2.imshow("Detected candidates", debug_img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
     
     # Берем самую верхнюю левую метку
     top_left_mark = marks[0]
-    x, y, mark_w, mark_h = top_left_mark
+    x, y, mark_w, mark_h, area, circularity = top_left_mark
     
-    print(f"Найдена верхняя левая метка: x={x}, y={y}, w={mark_w}, h={mark_h}")
+    print(f"Выбрана метка: x={x}, y={y}, w={mark_w}, h={mark_h}, "
+          f"area={area:.1f}, circ={circularity:.2f}")
     
     # Определяем область для обрезки
-    # Обрезаем начиная от правого края метки (по горизонтали)
-    # и от нижнего края метки (по вертикали)
-    crop_x = min(x + mark_w + offset, w - 1)  # Начинаем справа от метки
-    crop_y = min(y + mark_h + offset, h - 1)  # Начинаем снизу от метки
+    crop_x = min(x + mark_w + offset, w - 1)
+    crop_y = min(y + mark_h + offset, h - 1)
     
     # Проверяем корректность координат
-    if crop_x >= w or crop_y >= h:
+    if crop_x >= w or crop_y >= h or crop_x < 0 or crop_y < 0:
         print(f"Некорректные координаты обрезки: x={crop_x}, y={crop_y}")
-        print("Возвращаю оригинальное изображение")
-        return original, [top_left_mark]
+        return original, [(x, y, mark_w, mark_h)]
     
     # Обрезаем изображение
-    # Обрезаем ВСЮ область справа и снизу от метки
     roi = image[crop_y:h, crop_x:w]
-    
-    # Проверяем, что ROI не пустой
-    if roi.size == 0:
-        print("ROI пустой, возвращаю оригинальное изображение")
-        return original, [top_left_mark]
     
     print(f"Обрезано: от y={crop_y} до {h}, от x={crop_x} до {w}")
     
-    return roi, [top_left_mark]
-
+    return roi, [(x, y, mark_w, mark_h)]
 
 # Дополнительная функция для визуализации меток (для отладки)
 def draw_marks(image, marks, color=(0, 255, 0), thickness=2):
