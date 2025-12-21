@@ -7,7 +7,7 @@ from difflib import SequenceMatcher
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
 # путь к изображению
-IMAGE_PATH = "1/1_8.png"
+IMAGE_PATH = "1/1_9.png"
 
 def crop_by_marks(image, offset=50):
     """
@@ -112,9 +112,9 @@ def crop_by_marks(image, offset=50):
         return original, [(x, y, mark_w, mark_h)]
     
     # Покажем результат обрезки
-    cv2.imshow("Cropped image", roi)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow("Cropped image", roi)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
     
     return roi, [(x, y, mark_w, mark_h)]
 
@@ -154,10 +154,10 @@ if roi is not None and roi.size > 0:
     print("Обрезанное изображение сохранено как roi_without_marks.png")
     
     # Показать результат (опционально)
-    cv2.imshow("Original", img)
-    cv2.imshow("ROI", roi)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow("Original", img)
+    # cv2.imshow("ROI", roi)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 else:
     print("Ошибка: ROI пустой, пропускаем обрезку")
     roi = img.copy()
@@ -190,7 +190,7 @@ print(f"Распознано строк: {len(lines)}")
 expected_lines = []
 
 expected_lines.append(
-    "Задание указано на доске. Подписывать бланк не требуется"
+    "Задание указано на доске. Подписывать бланк НЕ требуется"
 )
 
 for _ in range(5):
