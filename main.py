@@ -9,7 +9,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\
 # путь к изображению
 IMAGE_PATH = "1/1_8.png"
 
-def crop_by_marks(image, offset=0):
+def crop_by_marks(image, offset=100):
     """
     Обрезает изображение, удаляя верхнюю левую метку позиционирования.
     Метка - это Х в кружке.
@@ -21,25 +21,8 @@ def crop_by_marks(image, offset=0):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     h, w = gray.shape
     
-    # Показываем оригинальное изображение
-    cv2.imshow("Original", image)
-    
     # Бинаризуем изображение
-    # Попробуем разные методы бинаризации
-    _, binary1 = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-    
-    # Альтернатива: адаптивная бинаризация
-    binary2 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-                                   cv2.THRESH_BINARY_INV, 11, 2)
-    
-    # Показываем оба варианта бинаризации
-    cv2.imshow("Binary Otsu", binary1)
-    cv2.imshow("Binary Adaptive", binary2)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    
-    # Используем адаптивную бинаризацию (обычно лучше для неравномерного освещения)
-    binary = binary1
+    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     
     # Находим контуры
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -50,39 +33,14 @@ def crop_by_marks(image, offset=0):
         x, y, cw, ch = cv2.boundingRect(cnt)
         area = cv2.contourArea(cnt)
         
-        # Пропускаем слишком маленькие или слишком большие объекты
-        if area < 50 or area > 3000:
-            continue
-            
-        # Вычисляем дополнительные характеристики формы
-        perimeter = cv2.arcLength(cnt, True)
-        
-        # Пропускаем объекты с очень маленьким периметром
-        if perimeter < 20:
-            continue
-            
-        # Компактность (отношение площади к площади bounding box)
-        bbox_area = cw * ch
-        compactness = area / bbox_area if bbox_area > 0 else 0
-        
-        # Отношение сторон
-        aspect_ratio = cw / ch if ch > 0 else 0
-        
-        # Круглость (для круга = 1, для других форм меньше)
-        circularity = (4 * np.pi * area) / (perimeter * perimeter) if perimeter > 0 else 0
-        
-        print(f"Объект: x={x}, y={y}, w={cw}, h={ch}, area={area:.1f}, "
-              f"compact={compactness:.2f}, aspect={aspect_ratio:.2f}, "
-              f"circ={circularity:.2f}")
-        
-        # Критерии для метки "Х в кружке":
-        # 1. Компактность не слишком малая (не тонкая линия)
-        # 2. Отношение сторон близко к 1 (квадрат/круг)
-        # 3. Размер в разумных пределах
-        if (0.3 < compactness < 0.9 and 
-            0.5 < aspect_ratio < 2.0 and
-            100 < area < 2000):
-            marks.append((x, y, cw, ch, area, circularity))
+        # Фильтр по размеру
+        if 50 < area < 3000:
+            perimeter = cv2.arcLength(cnt, True)
+            if perimeter > 0:
+                circularity = (4 * np.pi * area) / (perimeter * perimeter)
+                # Фильтруем по кругости
+                if circularity > 0.4:
+                    marks.append((x, y, cw, ch, area, circularity))
     
     if not marks:
         print("Метки не найдены, возвращаю оригинальное изображение")
@@ -100,11 +58,17 @@ def crop_by_marks(image, offset=0):
     
     cv2.imshow("Detected candidates", debug_img)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
     
-    # Берем самую верхнюю левую метку
-    top_left_mark = marks[0]
-    x, y, mark_w, mark_h, area, circularity = top_left_mark
+    # Выбираем метку (в вашем случае - вторая метка, индекс 1)
+    if len(marks) > 1:
+        # Если есть несколько меток, берем вторую (индекс 1)
+        target_mark = marks[1]  # Вторая метка в списке
+        print(f"Выбрана вторая метка (индекс 1)")
+    else:
+        target_mark = marks[0]  # Если только одна
+        print(f"Выбрана единственная метка")
+    
+    x, y, mark_w, mark_h, area, circularity = target_mark
     
     print(f"Выбрана метка: x={x}, y={y}, w={mark_w}, h={mark_h}, "
           f"area={area:.1f}, circ={circularity:.2f}")
@@ -122,6 +86,11 @@ def crop_by_marks(image, offset=0):
     roi = image[crop_y:h, crop_x:w]
     
     print(f"Обрезано: от y={crop_y} до {h}, от x={crop_x} до {w}")
+    
+    # Показываем результат обрезки
+    cv2.imshow("Cropped result", roi)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
     
     return roi, [(x, y, mark_w, mark_h)]
 
