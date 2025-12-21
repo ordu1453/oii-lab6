@@ -9,10 +9,17 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\
 # путь к изображению
 IMAGE_PATH = "1/1_8.png"
 
-def crop_by_marks(image, offset=100):
+def crop_by_marks(image, offset=50):
     """
     Обрезает изображение, удаляя верхнюю левую метку позиционирования.
-    Метка - это Х в кружке.
+    
+    Args:
+        image: исходное изображение
+        offset: дополнительный отступ после метки (положительный = отступ от метки)
+        
+    Returns:
+        cropped_image: обрезанное изображение
+        mark_coords: координаты найденной метки (x, y, w, h)
     """
     # Создаем копию изображения
     original = image.copy()
@@ -20,6 +27,8 @@ def crop_by_marks(image, offset=100):
     # Конвертируем в grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     h, w = gray.shape
+    
+    print(f"Размер изображения: {image.shape}")
     
     # Бинаризуем изображение
     _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
@@ -34,61 +43,76 @@ def crop_by_marks(image, offset=100):
         area = cv2.contourArea(cnt)
         
         # Фильтр по размеру
-        if 50 < area < 3000:
-            perimeter = cv2.arcLength(cnt, True)
-            if perimeter > 0:
-                circularity = (4 * np.pi * area) / (perimeter * perimeter)
-                # Фильтруем по кругости
-                if circularity > 0.4:
-                    marks.append((x, y, cw, ch, area, circularity))
+        if 200 < area < 3000:  # Увеличил минимальную площадь для метки
+            marks.append((x, y, cw, ch, area))
     
     if not marks:
         print("Метки не найдены, возвращаю оригинальное изображение")
         return original, []
     
-    # Сортируем по положению (верхний левый угол)
+    # Сортируем по положению
     marks.sort(key=lambda m: (m[1], m[0]))
     
     # Отображаем все найденные кандидаты
     debug_img = image.copy()
-    for i, (x, y, w, h, area, circ) in enumerate(marks):
+    for i, (x, y, w, h, area) in enumerate(marks):
         cv2.rectangle(debug_img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        cv2.putText(debug_img, f"{i}", (x, y-5), 
+        cv2.putText(debug_img, f"{i}:{area:.0f}", (x, y-5), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
     
-    cv2.imshow("Detected candidates", debug_img)
-    cv2.waitKey(0)
+    # cv2.imshow("Detected candidates", debug_img)
+    # cv2.waitKey(0)
     
-    # Выбираем метку (в вашем случае - вторая метка, индекс 1)
+    # Выбираем нужную метку (обычно вторая метка для верхней левой)
     if len(marks) > 1:
-        # Если есть несколько меток, берем вторую (индекс 1)
-        target_mark = marks[1]  # Вторая метка в списке
-        print(f"Выбрана вторая метка (индекс 1)")
+        target_idx = 1  # Вторая метка
     else:
-        target_mark = marks[0]  # Если только одна
-        print(f"Выбрана единственная метка")
+        target_idx = 0
     
-    x, y, mark_w, mark_h, area, circularity = target_mark
+    x, y, mark_w, mark_h, area = marks[target_idx]
     
-    print(f"Выбрана метка: x={x}, y={y}, w={mark_w}, h={mark_h}, "
-          f"area={area:.1f}, circ={circularity:.2f}")
+    print(f"Выбрана метка #{target_idx}: x={x}, y={y}, w={mark_w}, h={mark_h}, area={area:.1f}")
     
-    # Определяем область для обрезки
-    crop_x = min(x + mark_w + offset, w - 1)
-    crop_y = min(y + mark_h + offset, h - 1)
+    # ОТЛАДКА: покажем выбранную метку
+    selected_img = image.copy()
+    # cv2.rectangle(selected_img, (x, y), (x+mark_w, y+mark_h), (0, 0, 255), 3)
+    # cv2.imshow("Selected mark", selected_img)
+    # cv2.waitKey(0)
     
-    # Проверяем корректность координат
-    if crop_x >= w or crop_y >= h or crop_x < 0 or crop_y < 0:
-        print(f"Некорректные координаты обрезки: x={crop_x}, y={crop_y}")
+    # Ключевое исправление: обрезаем справа от метки и снизу от метки
+    # Для обрезки СЛЕВА И СВЕРХУ (как в задании):
+    # Обрезаем от правого края метки до конца изображения (по горизонтали)
+    # и от нижнего края метки до конца изображения (по вертикали)
+    
+    # Начальные координаты для обрезки (после метки)
+    crop_start_x = x + mark_w + offset  # Начинаем справа от метки
+    crop_start_y = y + mark_h + offset  # Начинаем снизу от метки
+    
+    # # Проверяем, чтобы координаты были в пределах изображения
+    # crop_start_x = max(0, min(crop_start_x, w - 1))
+    # crop_start_y = max(0, min(crop_start_y, h - 1))
+    
+    print(f"Координаты обрезки: x_start={crop_start_x}, y_start={crop_start_y}, x_end={w}, y_end={h}")
+    
+    # # Проверяем, что область обрезки имеет разумный размер
+    # if crop_start_x >= w - 10 or crop_start_y >= h - 10:
+    #     print(f"Слишком маленькая область для обрезки!")
+    #     print(f"crop_start_x={crop_start_x}, crop_start_y={crop_start_y}")
+    #     print("Возвращаю оригинальное изображение")
+    #     return original, [(x, y, mark_w, mark_h)]
+    
+    # Обрезаем изображение (от crop_start_x до конца по ширине, от crop_start_y до конца по высоте)
+    roi = image[crop_start_y:, crop_start_x:]
+    
+    print(f"Размер ROI: {roi.shape if roi.size > 0 else 'пустой'}")
+    
+    # Проверяем, что ROI не пустой
+    if roi.size == 0:
+        print("ROI пустой, возвращаю оригинальное изображение")
         return original, [(x, y, mark_w, mark_h)]
     
-    # Обрезаем изображение
-    roi = image[crop_y:h, crop_x:w]
-    
-    print(f"Обрезано: от y={crop_y} до {h}, от x={crop_x} до {w}")
-    
-    # Показываем результат обрезки
-    cv2.imshow("Cropped result", roi)
+    # Покажем результат обрезки
+    cv2.imshow("Cropped image", roi)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     
@@ -130,10 +154,10 @@ if roi is not None and roi.size > 0:
     print("Обрезанное изображение сохранено как roi_without_marks.png")
     
     # Показать результат (опционально)
-    # cv2.imshow("Original", img)
-    # cv2.imshow("ROI", roi)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    cv2.imshow("Original", img)
+    cv2.imshow("ROI", roi)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 else:
     print("Ошибка: ROI пустой, пропускаем обрезку")
     roi = img.copy()
