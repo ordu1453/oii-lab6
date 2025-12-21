@@ -3,11 +3,13 @@ import pytesseract
 import numpy as np
 from jiwer import cer, wer
 from difflib import SequenceMatcher
+import os
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
 # путь к изображению
-IMAGE_PATH = "1/1_9.png"
+IMAGE_PATH = "1/1_1.png"
+PATH = "res.png"
 
 def crop_by_marks(image, offset=50):
     """
@@ -38,68 +40,60 @@ def crop_by_marks(image, offset=50):
     
     marks = []
     
+    # Определяем область поиска для верхней левой метки (например, 1/4 изображения)
+    search_area_w = w // 2  # левая половина по ширине
+    search_area_h = h // 2  # верхняя половина по высоте
+    
     for cnt in contours:
         x, y, cw, ch = cv2.boundingRect(cnt)
         area = cv2.contourArea(cnt)
         
         # Фильтр по размеру
-        if 200 < area < 3000:  # Увеличил минимальную площадь для метки
-            marks.append((x, y, cw, ch, area))
+        if 200 < area < 3000:
+            # Фильтр по положению: только в верхней левой части
+            if x < search_area_w and y < search_area_h:
+                marks.append((x, y, cw, ch, area))
     
     if not marks:
-        print("Метки не найдены, возвращаю оригинальное изображение")
+        print("Метки в верхнем левом углу не найдены, возвращаю оригинальное изображение")
         return original, []
     
-    # Сортируем по положению
+    # Сортируем метки по положению (сначала по Y, потом по X)
     marks.sort(key=lambda m: (m[1], m[0]))
     
     # Отображаем все найденные кандидаты
     debug_img = image.copy()
+    # Рисуем область поиска
+    cv2.rectangle(debug_img, (0, 0), (search_area_w, search_area_h), (255, 0, 0), 2)
+    
     for i, (x, y, w, h, area) in enumerate(marks):
         cv2.rectangle(debug_img, (x, y), (x+w, y+h), (0, 255, 0), 2)
         cv2.putText(debug_img, f"{i}:{area:.0f}", (x, y-5), 
                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
     
-    # cv2.imshow("Detected candidates", debug_img)
+    # cv2.imshow("Detected candidates in top-left area", debug_img)
     # cv2.waitKey(0)
     
-    # Выбираем нужную метку (обычно вторая метка для верхней левой)
-    if len(marks) > 1:
-        target_idx = 1  # Вторая метка
-    else:
-        target_idx = 0
+    # Выбираем самую верхнюю левую метку (первую после сортировки)
+    x, y, mark_w, mark_h, area = marks[0]
     
-    x, y, mark_w, mark_h, area = marks[target_idx]
-    
-    print(f"Выбрана метка #{target_idx}: x={x}, y={y}, w={mark_w}, h={mark_h}, area={area:.1f}")
+    print(f"Найдено меток в верхнем левом углу: {len(marks)}")
+    print(f"Выбрана верхняя левая метка: x={x}, y={y}, w={mark_w}, h={mark_h}, area={area:.1f}")
     
     # ОТЛАДКА: покажем выбранную метку
     selected_img = image.copy()
-    # cv2.rectangle(selected_img, (x, y), (x+mark_w, y+mark_h), (0, 0, 255), 3)
-    # cv2.imshow("Selected mark", selected_img)
+    cv2.rectangle(selected_img, (x, y), (x+mark_w, y+mark_h), (0, 0, 255), 3)
+    cv2.rectangle(selected_img, (0, 0), (search_area_w, search_area_h), (255, 0, 0), 2)
+    # cv2.imshow("Selected top-left mark", selected_img)
     # cv2.waitKey(0)
     
-    # Ключевое исправление: обрезаем справа от метки и снизу от метки
-    # Для обрезки СЛЕВА И СВЕРХУ (как в задании):
-    # Обрезаем от правого края метки до конца изображения (по горизонтали)
-    # и от нижнего края метки до конца изображения (по вертикали)
-    
-    # Начальные координаты для обрезки (после метки)
-    crop_start_x = x + mark_w + offset  # Начинаем справа от метки
-    crop_start_y = y + mark_h + offset  # Начинаем снизу от метки
-    
-    # # Проверяем, чтобы координаты были в пределах изображения
-    # crop_start_x = max(0, min(crop_start_x, w - 1))
-    # crop_start_y = max(0, min(crop_start_y, h - 1))
+    # Вычисляем координаты для обрезки
+    # Обрезаем справа от метки и снизу от метки
+    crop_start_x = x + mark_w + offset
+    crop_start_y = y + mark_h + offset
     
     print(f"Координаты обрезки: x_start={crop_start_x}, y_start={crop_start_y}, x_end={w}, y_end={h}")
     
-    # # Проверяем, что область обрезки имеет разумный размер
-    # if crop_start_x >= w - 10 or crop_start_y >= h - 10:
-    #     print(f"Слишком маленькая область для обрезки!")
-    #     print(f"crop_start_x={crop_start_x}, crop_start_y={crop_start_y}")
-    #     print("Возвращаю оригинальное изображение")
-    #     return original, [(x, y, mark_w, mark_h)]
     
     # Обрезаем изображение (от crop_start_x до конца по ширине, от crop_start_y до конца по высоте)
     roi = image[crop_start_y:, crop_start_x:]
@@ -167,10 +161,25 @@ else:
 # -------------------------------
 gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
 
+gray = cv2.blur(gray,(5,5))
+
 _, thresh = cv2.threshold(
-    gray, 0, 255,
+    gray, 100, 255,
     cv2.THRESH_BINARY + cv2.THRESH_OTSU
 )
+
+# # Конвертация в grayscale
+# gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+
+# # Повышение контраста (CLAHE)
+# clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+# enhanced = clahe.apply(gray)
+
+# # Бинаризация
+# _, thresh = cv2.threshold(enhanced, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+# # Удаление шума
+# denoised = cv2.medianBlur(thresh, 3)
 
 # Сохраняем бинаризованное изображение для отладки
 cv2.imwrite("binary.png", thresh)
@@ -178,11 +187,19 @@ cv2.imwrite("binary.png", thresh)
 # -------------------------------
 # 4. OCR
 # -------------------------------
-config = r"--oem 3 --psm 6 -l rus"
+config = r"--oem 3 --psm 1 -l rus"
 raw_text = pytesseract.image_to_string(thresh, config=config)
 
 lines = [l.strip() for l in raw_text.splitlines() if l.strip()]
 print(f"Распознано строк: {len(lines)}")
+# print(raw_text)
+
+# Создаем имя текстового файла
+text_file = os.path.splitext(PATH)[0] + ".txt"
+
+# Записываем текст в файл
+with open(text_file, "w", encoding="utf-8") as file:
+    file.write(raw_text)
 
 # -------------------------------
 # 5. Эталон
