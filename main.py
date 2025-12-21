@@ -6,39 +6,92 @@ from difflib import SequenceMatcher
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\ordum\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
+
 # путь к изображению
-IMAGE_PATH = "1/1_1.png"
+IMAGE_PATH = "1/1_8.png"
 
-def crop_roi(image, x_min, y_min, x_max, y_max):
+def find_alignment_marks(binary_img):
     """
-    x_min, y_min, x_max, y_max — в долях от 0 до 1
+    Находит координаты меток позиционирования
+    Возвращает список bounding box'ов (x, y, w, h)
     """
-    h, w = image.shape[:2]
+    contours, _ = cv2.findContours(
+        binary_img,
+        cv2.RETR_EXTERNAL,
+        cv2.CHAIN_APPROX_SIMPLE
+    )
 
-    x1 = int(w * x_min)
-    y1 = int(h * y_min)
-    x2 = int(w * x_max)
-    y2 = int(h * y_max)
+    h, w = binary_img.shape
+    marks = []
 
-    return image[y1:y2, x1:x2]
+    for cnt in contours:
+        x, y, cw, ch = cv2.boundingRect(cnt)
+        area = cv2.contourArea(cnt)
+
+        # фильтр по размеру (подходит под метки)
+        if 20 < area < 1000:
+            # близко к краям
+            if x < w * 0.1 or y < h * 0.1:
+                marks.append((x, y, cw, ch))
+
+    return marks
+
+def crop_by_marks(image, offset=10):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Инвертируем для поиска контуров меток
+    _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    h, w = gray.shape
+    top_cut = 0
+    left_cut = 0
+    right_cut = w
+
+    marks = []
+
+    for cnt in contours:
+        x, y, cw, ch = cv2.boundingRect(cnt)
+        area = cv2.contourArea(cnt)
+
+        # фильтр по размеру (подходит под метки)
+        if 20 < area < 1000:
+            marks.append((x, y, cw, ch))
+
+    if marks:
+        # верхняя граница ROI
+        top_cut = max(y + ch for x, y, cw, ch in marks if y < h * 0.5)
+
+        # левая граница ROI
+        left_cut = max(x + cw for x, y, cw, ch in marks if x < w * 0.5)
+
+        # правая граница ROI
+        right_cut = min(x for x, y, cw, ch in marks if x > w * 0.5)
+
+    # добавляем небольшой отступ
+    top_cut += offset
+    left_cut += offset
+    right_cut -= offset
+
+    roi = image[top_cut:h, left_cut:right_cut]
+    return roi, marks
+
 
 # -------------------------------
-# 1. Загрузка изображения
+# 1. Загрузка
 # -------------------------------
 img = cv2.imread(IMAGE_PATH)
 
 # -------------------------------
-# 2. Ограничение области (ROI)
+# 2. Автообрезка по меткам
 # -------------------------------
-# Подбирается под данный шаблон
-roi = crop_roi(
-    img,
-    x_min=0.11,   # слева
-    y_min=0.1,   # сверху
-    x_max=0.95,   # справа
-    y_max=0.90    # снизу
-)
+roi, marks = crop_by_marks(img)
 
+cv2.imwrite("roi_without_marks.png", roi)
+print("Обрезанное изображение сохранено как roi_without_marks.png")
+# cv2.imshow("img", img)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 # -------------------------------
 # 3. Предобработка
 # -------------------------------
@@ -55,15 +108,15 @@ _, thresh = cv2.threshold(
 config = r"--oem 3 --psm 6 -l rus"
 raw_text = pytesseract.image_to_string(thresh, config=config)
 
-lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+lines = [l.strip() for l in raw_text.splitlines() if l.strip()]
 
 # -------------------------------
-# 5. Эталонные строки
+# 5. Эталон
 # -------------------------------
 expected_lines = []
 
 expected_lines.append(
-    "Задание указано на доске. Подписывать бланк НЕ требуется"
+    "Задание указано на доске. Подписывать бланк не требуется"
 )
 
 for _ in range(5):
@@ -80,10 +133,9 @@ for _ in range(5):
 def char_accuracy(gt, pred):
     return SequenceMatcher(None, gt, pred).ratio()
 
-print("\n=== ПОСТРОЧНАЯ ПРОВЕРКА (ROI) ===\n")
+print("\n=== OCR С АВТООБРЕЗКОЙ ПО МЕТКАМ ===\n")
 
-acc_list = []
-cer_list = []
+acc_list, cer_list = [], []
 
 for i, (gt, pred) in enumerate(zip(expected_lines, lines)):
     acc = char_accuracy(gt, pred)
@@ -100,5 +152,5 @@ for i, (gt, pred) in enumerate(zip(expected_lines, lines)):
     print("-" * 50)
 
 print("\n=== ИТОГО ===")
-print(f"Средняя Accuracy: {sum(acc_list) / len(acc_list):.4f}")
-print(f"Средний CER: {sum(cer_list) / len(cer_list):.4f}")
+print(f"Средняя Accuracy: {sum(acc_list)/len(acc_list):.4f}")
+print(f"Средний CER: {sum(cer_list)/len(cer_list):.4f}")
