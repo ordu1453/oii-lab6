@@ -1,0 +1,2445 @@
+{
+  "timestamp": "2025-12-20T18:50:57",
+  "overall_accuracy": 0.0,
+  "statistics": {
+    "total_expected": 215,
+    "correct": 0,
+    "incorrect": 215,
+    "missing": 0,
+    "extra": 188
+  },
+  "detailed_comparison": [
+    {
+      "position": 0,
+      "expected": "А",
+      "recognized": "©",
+      "status": "incorrect"
+    },
+    {
+      "position": 1,
+      "expected": "Б",
+      "recognized": "Ф",
+      "status": "incorrect"
+    },
+    {
+      "position": 2,
+      "expected": "В",
+      "recognized": "З",
+      "status": "incorrect"
+    },
+    {
+      "position": 3,
+      "expected": "Г",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 4,
+      "expected": "Д",
+      "recognized": "д",
+      "status": "incorrect"
+    },
+    {
+      "position": 5,
+      "expected": "Е",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 6,
+      "expected": "Ё",
+      "recognized": "н",
+      "status": "incorrect"
+    },
+    {
+      "position": 7,
+      "expected": "Ж",
+      "recognized": "и",
+      "status": "incorrect"
+    },
+    {
+      "position": 8,
+      "expected": "З",
+      "recognized": "е",
+      "status": "incorrect"
+    },
+    {
+      "position": 9,
+      "expected": "И",
+      "recognized": "у",
+      "status": "incorrect"
+    },
+    {
+      "position": 10,
+      "expected": "Й",
+      "recognized": "к",
+      "status": "incorrect"
+    },
+    {
+      "position": 11,
+      "expected": "К",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 12,
+      "expected": "Л",
+      "recognized": "з",
+      "status": "incorrect"
+    },
+    {
+      "position": 13,
+      "expected": "М",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 14,
+      "expected": "Н",
+      "recognized": "н",
+      "status": "incorrect"
+    },
+    {
+      "position": 15,
+      "expected": "О",
+      "recognized": "о",
+      "status": "incorrect"
+    },
+    {
+      "position": 16,
+      "expected": "П",
+      "recognized": "н",
+      "status": "incorrect"
+    },
+    {
+      "position": 17,
+      "expected": "Р",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 18,
+      "expected": "С",
+      "recognized": "д",
+      "status": "incorrect"
+    },
+    {
+      "position": 19,
+      "expected": "Т",
+      "recognized": "о",
+      "status": "incorrect"
+    },
+    {
+      "position": 20,
+      "expected": "У",
+      "recognized": "с",
+      "status": "incorrect"
+    },
+    {
+      "position": 21,
+      "expected": "Ф",
+      "recognized": "к",
+      "status": "incorrect"
+    },
+    {
+      "position": 22,
+      "expected": "Х",
+      "recognized": "е",
+      "status": "incorrect"
+    },
+    {
+      "position": 23,
+      "expected": "Ц",
+      "recognized": ".",
+      "status": "incorrect"
+    },
+    {
+      "position": 24,
+      "expected": "Ч",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 25,
+      "expected": "Ш",
+      "recognized": "о",
+      "status": "incorrect"
+    },
+    {
+      "position": 26,
+      "expected": "Щ",
+      "recognized": "д",
+      "status": "incorrect"
+    },
+    {
+      "position": 27,
+      "expected": "Ъ",
+      "recognized": "п",
+      "status": "incorrect"
+    },
+    {
+      "position": 28,
+      "expected": "Ы",
+      "recognized": "и",
+      "status": "incorrect"
+    },
+    {
+      "position": 29,
+      "expected": "Ь",
+      "recognized": "с",
+      "status": "incorrect"
+    },
+    {
+      "position": 30,
+      "expected": "Э",
+      "recognized": "ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 31,
+      "expected": "Ю",
+      "recognized": "в",
+      "status": "incorrect"
+    },
+    {
+      "position": 32,
+      "expected": "Я",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 33,
+      "expected": "0",
+      "recognized": "т",
+      "status": "incorrect"
+    },
+    {
+      "position": 34,
+      "expected": "1",
+      "recognized": "ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 35,
+      "expected": "2",
+      "recognized": "б",
+      "status": "incorrect"
+    },
+    {
+      "position": 36,
+      "expected": "3",
+      "recognized": "л",
+      "status": "incorrect"
+    },
+    {
+      "position": 37,
+      "expected": "4",
+      "recognized": "а",
+      "status": "incorrect"
+    },
+    {
+      "position": 38,
+      "expected": "5",
+      "recognized": "н",
+      "status": "incorrect"
+    },
+    {
+      "position": 39,
+      "expected": "6",
+      "recognized": "к",
+      "status": "incorrect"
+    },
+    {
+      "position": 40,
+      "expected": "7",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 41,
+      "expected": "8",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 42,
+      "expected": "9",
+      "recognized": "т",
+      "status": "incorrect"
+    },
+    {
+      "position": 43,
+      "expected": "А",
+      "recognized": "р",
+      "status": "incorrect"
+    },
+    {
+      "position": 44,
+      "expected": "Б",
+      "recognized": "е",
+      "status": "incorrect"
+    },
+    {
+      "position": 45,
+      "expected": "В",
+      "recognized": "б",
+      "status": "incorrect"
+    },
+    {
+      "position": 46,
+      "expected": "Г",
+      "recognized": "у",
+      "status": "incorrect"
+    },
+    {
+      "position": 47,
+      "expected": "Д",
+      "recognized": "е",
+      "status": "incorrect"
+    },
+    {
+      "position": 48,
+      "expected": "Е",
+      "recognized": "т",
+      "status": "incorrect"
+    },
+    {
+      "position": 49,
+      "expected": "Ё",
+      "recognized": "с",
+      "status": "incorrect"
+    },
+    {
+      "position": 50,
+      "expected": "Ж",
+      "recognized": "я",
+      "status": "incorrect"
+    },
+    {
+      "position": 51,
+      "expected": "З",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 52,
+      "expected": "И",
+      "recognized": "Ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 53,
+      "expected": "Й",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 54,
+      "expected": "К",
+      "recognized": "Ц",
+      "status": "incorrect"
+    },
+    {
+      "position": 55,
+      "expected": "Л",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 56,
+      "expected": "М",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 57,
+      "expected": "Н",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 58,
+      "expected": "О",
+      "recognized": "5",
+      "status": "incorrect"
+    },
+    {
+      "position": 59,
+      "expected": "П",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 60,
+      "expected": "Р",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 61,
+      "expected": "С",
+      "recognized": "К",
+      "status": "incorrect"
+    },
+    {
+      "position": 62,
+      "expected": "Т",
+      "recognized": "А",
+      "status": "incorrect"
+    },
+    {
+      "position": 63,
+      "expected": "У",
+      "recognized": "М",
+      "status": "incorrect"
+    },
+    {
+      "position": 64,
+      "expected": "Ф",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 65,
+      "expected": "Х",
+      "recognized": "О",
+      "status": "incorrect"
+    },
+    {
+      "position": 66,
+      "expected": "Ц",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 67,
+      "expected": "Ч",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 68,
+      "expected": "Ш",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 69,
+      "expected": "Щ",
+      "recognized": "Т",
+      "status": "incorrect"
+    },
+    {
+      "position": 70,
+      "expected": "Ъ",
+      "recognized": "ч",
+      "status": "incorrect"
+    },
+    {
+      "position": 71,
+      "expected": "Ы",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 72,
+      "expected": "Ь",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 73,
+      "expected": "Э",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 74,
+      "expected": "Ю",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 75,
+      "expected": "Я",
+      "recognized": "Ш",
+      "status": "incorrect"
+    },
+    {
+      "position": 76,
+      "expected": "0",
+      "recognized": "Ш",
+      "status": "incorrect"
+    },
+    {
+      "position": 77,
+      "expected": "1",
+      "recognized": "У",
+      "status": "incorrect"
+    },
+    {
+      "position": 78,
+      "expected": "2",
+      "recognized": "Ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 79,
+      "expected": "3",
+      "recognized": "Ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 80,
+      "expected": "4",
+      "recognized": "З",
+      "status": "incorrect"
+    },
+    {
+      "position": 81,
+      "expected": "5",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 82,
+      "expected": "6",
+      "recognized": "Я",
+      "status": "incorrect"
+    },
+    {
+      "position": 83,
+      "expected": "7",
+      "recognized": "-",
+      "status": "incorrect"
+    },
+    {
+      "position": 84,
+      "expected": "8",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 85,
+      "expected": "9",
+      "recognized": "Л",
+      "status": "incorrect"
+    },
+    {
+      "position": 86,
+      "expected": "А",
+      "recognized": "2",
+      "status": "incorrect"
+    },
+    {
+      "position": 87,
+      "expected": "Б",
+      "recognized": "7",
+      "status": "incorrect"
+    },
+    {
+      "position": 88,
+      "expected": "В",
+      "recognized": "4",
+      "status": "incorrect"
+    },
+    {
+      "position": 89,
+      "expected": "Г",
+      "recognized": "5",
+      "status": "incorrect"
+    },
+    {
+      "position": 90,
+      "expected": "Д",
+      "recognized": "6",
+      "status": "incorrect"
+    },
+    {
+      "position": 91,
+      "expected": "Е",
+      "recognized": "7",
+      "status": "incorrect"
+    },
+    {
+      "position": 92,
+      "expected": "Ё",
+      "recognized": "8",
+      "status": "incorrect"
+    },
+    {
+      "position": 93,
+      "expected": "Ж",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 94,
+      "expected": "З",
+      "recognized": "Ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 95,
+      "expected": "И",
+      "recognized": "В",
+      "status": "incorrect"
+    },
+    {
+      "position": 96,
+      "expected": "Й",
+      "recognized": "Г",
+      "status": "incorrect"
+    },
+    {
+      "position": 97,
+      "expected": "К",
+      "recognized": "Д",
+      "status": "incorrect"
+    },
+    {
+      "position": 98,
+      "expected": "Л",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 99,
+      "expected": "М",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 100,
+      "expected": "Н",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 101,
+      "expected": "О",
+      "recognized": "5",
+      "status": "incorrect"
+    },
+    {
+      "position": 102,
+      "expected": "П",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 103,
+      "expected": "Р",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 104,
+      "expected": "С",
+      "recognized": "К",
+      "status": "incorrect"
+    },
+    {
+      "position": 105,
+      "expected": "Т",
+      "recognized": "А",
+      "status": "incorrect"
+    },
+    {
+      "position": 106,
+      "expected": "У",
+      "recognized": "М",
+      "status": "incorrect"
+    },
+    {
+      "position": 107,
+      "expected": "Ф",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 108,
+      "expected": "Х",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 109,
+      "expected": "Ц",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 110,
+      "expected": "Ч",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 111,
+      "expected": "Ш",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 112,
+      "expected": "Щ",
+      "recognized": "Т",
+      "status": "incorrect"
+    },
+    {
+      "position": 113,
+      "expected": "Ъ",
+      "recognized": "Ч",
+      "status": "incorrect"
+    },
+    {
+      "position": 114,
+      "expected": "Ы",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 115,
+      "expected": "Ь",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 116,
+      "expected": "Э",
+      "recognized": "Ц",
+      "status": "incorrect"
+    },
+    {
+      "position": 117,
+      "expected": "Ю",
+      "recognized": "У",
+      "status": "incorrect"
+    },
+    {
+      "position": 118,
+      "expected": "Я",
+      "recognized": "Ш",
+      "status": "incorrect"
+    },
+    {
+      "position": 119,
+      "expected": "0",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 120,
+      "expected": "1",
+      "recognized": "Ъ",
+      "status": "incorrect"
+    },
+    {
+      "position": 121,
+      "expected": "2",
+      "recognized": "Ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 122,
+      "expected": "3",
+      "recognized": "Ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 123,
+      "expected": "4",
+      "recognized": "Э",
+      "status": "incorrect"
+    },
+    {
+      "position": 124,
+      "expected": "5",
+      "recognized": "Ю",
+      "status": "incorrect"
+    },
+    {
+      "position": 125,
+      "expected": "6",
+      "recognized": "Я",
+      "status": "incorrect"
+    },
+    {
+      "position": 126,
+      "expected": "7",
+      "recognized": "-",
+      "status": "incorrect"
+    },
+    {
+      "position": 127,
+      "expected": "8",
+      "recognized": "Й",
+      "status": "incorrect"
+    },
+    {
+      "position": 128,
+      "expected": "9",
+      "recognized": "/",
+      "status": "incorrect"
+    },
+    {
+      "position": 129,
+      "expected": "А",
+      "recognized": "2",
+      "status": "incorrect"
+    },
+    {
+      "position": 130,
+      "expected": "Б",
+      "recognized": "2",
+      "status": "incorrect"
+    },
+    {
+      "position": 131,
+      "expected": "В",
+      "recognized": "4",
+      "status": "incorrect"
+    },
+    {
+      "position": 132,
+      "expected": "Г",
+      "recognized": "5",
+      "status": "incorrect"
+    },
+    {
+      "position": 133,
+      "expected": "Д",
+      "recognized": "6",
+      "status": "incorrect"
+    },
+    {
+      "position": 134,
+      "expected": "Е",
+      "recognized": "7",
+      "status": "incorrect"
+    },
+    {
+      "position": 135,
+      "expected": "Ё",
+      "recognized": "8",
+      "status": "incorrect"
+    },
+    {
+      "position": 136,
+      "expected": "Ж",
+      "recognized": "9",
+      "status": "incorrect"
+    },
+    {
+      "position": 137,
+      "expected": "З",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 138,
+      "expected": "И",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 139,
+      "expected": "Й",
+      "recognized": "Ё",
+      "status": "incorrect"
+    },
+    {
+      "position": 140,
+      "expected": "К",
+      "recognized": "Г",
+      "status": "incorrect"
+    },
+    {
+      "position": 141,
+      "expected": "Л",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 142,
+      "expected": "М",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 143,
+      "expected": "Н",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 144,
+      "expected": "О",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 145,
+      "expected": "П",
+      "recognized": "А",
+      "status": "incorrect"
+    },
+    {
+      "position": 146,
+      "expected": "Р",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 147,
+      "expected": "С",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 148,
+      "expected": "Т",
+      "recognized": "К",
+      "status": "incorrect"
+    },
+    {
+      "position": 149,
+      "expected": "У",
+      "recognized": "А",
+      "status": "incorrect"
+    },
+    {
+      "position": 150,
+      "expected": "Ф",
+      "recognized": "М",
+      "status": "incorrect"
+    },
+    {
+      "position": 151,
+      "expected": "Х",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 152,
+      "expected": "Ц",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 153,
+      "expected": "Ч",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 154,
+      "expected": "Ш",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 155,
+      "expected": "Щ",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 156,
+      "expected": "Ъ",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 157,
+      "expected": "Ы",
+      "recognized": "Т",
+      "status": "incorrect"
+    },
+    {
+      "position": 158,
+      "expected": "Ь",
+      "recognized": "Ч",
+      "status": "incorrect"
+    },
+    {
+      "position": 159,
+      "expected": "Э",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 160,
+      "expected": "Ю",
+      "recognized": "Х",
+      "status": "incorrect"
+    },
+    {
+      "position": 161,
+      "expected": "Я",
+      "recognized": "Ц",
+      "status": "incorrect"
+    },
+    {
+      "position": 162,
+      "expected": "0",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 163,
+      "expected": "1",
+      "recognized": "Ш",
+      "status": "incorrect"
+    },
+    {
+      "position": 164,
+      "expected": "2",
+      "recognized": "Щ",
+      "status": "incorrect"
+    },
+    {
+      "position": 165,
+      "expected": "3",
+      "recognized": "Ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 166,
+      "expected": "4",
+      "recognized": "Ы",
+      "status": "incorrect"
+    },
+    {
+      "position": 167,
+      "expected": "5",
+      "recognized": "Ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 168,
+      "expected": "6",
+      "recognized": "З",
+      "status": "incorrect"
+    },
+    {
+      "position": 169,
+      "expected": "7",
+      "recognized": "В",
+      "status": "incorrect"
+    },
+    {
+      "position": 170,
+      "expected": "8",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 171,
+      "expected": "9",
+      "recognized": "Я",
+      "status": "incorrect"
+    },
+    {
+      "position": 172,
+      "expected": "А",
+      "recognized": "-",
+      "status": "incorrect"
+    },
+    {
+      "position": 173,
+      "expected": "Б",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 174,
+      "expected": "В",
+      "recognized": "Ч",
+      "status": "incorrect"
+    },
+    {
+      "position": 175,
+      "expected": "Г",
+      "recognized": "2",
+      "status": "incorrect"
+    },
+    {
+      "position": 176,
+      "expected": "Д",
+      "recognized": "7",
+      "status": "incorrect"
+    },
+    {
+      "position": 177,
+      "expected": "Е",
+      "recognized": "4",
+      "status": "incorrect"
+    },
+    {
+      "position": 178,
+      "expected": "Ё",
+      "recognized": "5",
+      "status": "incorrect"
+    },
+    {
+      "position": 179,
+      "expected": "Ж",
+      "recognized": "В",
+      "status": "incorrect"
+    },
+    {
+      "position": 180,
+      "expected": "З",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 181,
+      "expected": "И",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 182,
+      "expected": "Й",
+      "recognized": "З",
+      "status": "incorrect"
+    },
+    {
+      "position": 183,
+      "expected": "К",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 184,
+      "expected": "Л",
+      "recognized": "Б",
+      "status": "incorrect"
+    },
+    {
+      "position": 185,
+      "expected": "М",
+      "recognized": "Г",
+      "status": "incorrect"
+    },
+    {
+      "position": 186,
+      "expected": "Н",
+      "recognized": "Д",
+      "status": "incorrect"
+    },
+    {
+      "position": 187,
+      "expected": "О",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 188,
+      "expected": "П",
+      "recognized": "Ё",
+      "status": "incorrect"
+    },
+    {
+      "position": 189,
+      "expected": "Р",
+      "recognized": "Т",
+      "status": "incorrect"
+    },
+    {
+      "position": 190,
+      "expected": "С",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 191,
+      "expected": "Т",
+      "recognized": "И",
+      "status": "incorrect"
+    },
+    {
+      "position": 192,
+      "expected": "У",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 193,
+      "expected": "Ф",
+      "recognized": "А",
+      "status": "incorrect"
+    },
+    {
+      "position": 194,
+      "expected": "Х",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 195,
+      "expected": "Ц",
+      "recognized": "Н",
+      "status": "incorrect"
+    },
+    {
+      "position": 196,
+      "expected": "Ч",
+      "recognized": "О",
+      "status": "incorrect"
+    },
+    {
+      "position": 197,
+      "expected": "Ш",
+      "recognized": "П",
+      "status": "incorrect"
+    },
+    {
+      "position": 198,
+      "expected": "Щ",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 199,
+      "expected": "Ъ",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 200,
+      "expected": "Ы",
+      "recognized": "Т",
+      "status": "incorrect"
+    },
+    {
+      "position": 201,
+      "expected": "Ь",
+      "recognized": "+",
+      "status": "incorrect"
+    },
+    {
+      "position": 202,
+      "expected": "Э",
+      "recognized": "х",
+      "status": "incorrect"
+    },
+    {
+      "position": 203,
+      "expected": "Ю",
+      "recognized": "и",
+      "status": "incorrect"
+    },
+    {
+      "position": 204,
+      "expected": "Я",
+      "recognized": ":",
+      "status": "incorrect"
+    },
+    {
+      "position": 205,
+      "expected": "0",
+      "recognized": "З",
+      "status": "incorrect"
+    },
+    {
+      "position": 206,
+      "expected": "1",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 207,
+      "expected": "2",
+      "recognized": "Я",
+      "status": "incorrect"
+    },
+    {
+      "position": 208,
+      "expected": "3",
+      "recognized": "-",
+      "status": "incorrect"
+    },
+    {
+      "position": 209,
+      "expected": "4",
+      "recognized": "Р",
+      "status": "incorrect"
+    },
+    {
+      "position": 210,
+      "expected": "5",
+      "recognized": "О",
+      "status": "incorrect"
+    },
+    {
+      "position": 211,
+      "expected": "6",
+      "recognized": "Ь",
+      "status": "incorrect"
+    },
+    {
+      "position": 212,
+      "expected": "7",
+      "recognized": "Г",
+      "status": "incorrect"
+    },
+    {
+      "position": 213,
+      "expected": "8",
+      "recognized": "Е",
+      "status": "incorrect"
+    },
+    {
+      "position": 214,
+      "expected": "9",
+      "recognized": "”",
+      "status": "incorrect"
+    },
+    {
+      "position": 215,
+      "expected": "",
+      "recognized": "Я",
+      "status": "extra"
+    },
+    {
+      "position": 216,
+      "expected": "",
+      "recognized": "Б",
+      "status": "extra"
+    },
+    {
+      "position": 217,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 218,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 219,
+      "expected": "",
+      "recognized": "Д",
+      "status": "extra"
+    },
+    {
+      "position": 220,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 221,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 222,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 223,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 224,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 225,
+      "expected": "",
+      "recognized": "К",
+      "status": "extra"
+    },
+    {
+      "position": 226,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 227,
+      "expected": "",
+      "recognized": "М",
+      "status": "extra"
+    },
+    {
+      "position": 228,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 229,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 230,
+      "expected": "",
+      "recognized": "П",
+      "status": "extra"
+    },
+    {
+      "position": 231,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 232,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 233,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 234,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 235,
+      "expected": "",
+      "recognized": "Ф",
+      "status": "extra"
+    },
+    {
+      "position": 236,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 237,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 238,
+      "expected": "",
+      "recognized": "Ч",
+      "status": "extra"
+    },
+    {
+      "position": 239,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 240,
+      "expected": "",
+      "recognized": "Ш",
+      "status": "extra"
+    },
+    {
+      "position": 241,
+      "expected": "",
+      "recognized": "Ъ",
+      "status": "extra"
+    },
+    {
+      "position": 242,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 243,
+      "expected": "",
+      "recognized": "Ь",
+      "status": "extra"
+    },
+    {
+      "position": 244,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 245,
+      "expected": "",
+      "recognized": "0",
+      "status": "extra"
+    },
+    {
+      "position": 246,
+      "expected": "",
+      "recognized": "Я",
+      "status": "extra"
+    },
+    {
+      "position": 247,
+      "expected": "",
+      "recognized": "-",
+      "status": "extra"
+    },
+    {
+      "position": 248,
+      "expected": "",
+      "recognized": "1",
+      "status": "extra"
+    },
+    {
+      "position": 249,
+      "expected": "",
+      "recognized": "4",
+      "status": "extra"
+    },
+    {
+      "position": 250,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 251,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 252,
+      "expected": "",
+      "recognized": "4",
+      "status": "extra"
+    },
+    {
+      "position": 253,
+      "expected": "",
+      "recognized": "6",
+      "status": "extra"
+    },
+    {
+      "position": 254,
+      "expected": "",
+      "recognized": "6",
+      "status": "extra"
+    },
+    {
+      "position": 255,
+      "expected": "",
+      "recognized": "7",
+      "status": "extra"
+    },
+    {
+      "position": 256,
+      "expected": "",
+      "recognized": "8",
+      "status": "extra"
+    },
+    {
+      "position": 257,
+      "expected": "",
+      "recognized": "9",
+      "status": "extra"
+    },
+    {
+      "position": 258,
+      "expected": "",
+      "recognized": "‚",
+      "status": "extra"
+    },
+    {
+      "position": 259,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 260,
+      "expected": "",
+      "recognized": "Б",
+      "status": "extra"
+    },
+    {
+      "position": 261,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 262,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 263,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 264,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 265,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 266,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 267,
+      "expected": "",
+      "recognized": "?",
+      "status": "extra"
+    },
+    {
+      "position": 268,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 269,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 270,
+      "expected": "",
+      "recognized": "К",
+      "status": "extra"
+    },
+    {
+      "position": 271,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 272,
+      "expected": "",
+      "recognized": "М",
+      "status": "extra"
+    },
+    {
+      "position": 273,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 274,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 275,
+      "expected": "",
+      "recognized": "Й",
+      "status": "extra"
+    },
+    {
+      "position": 276,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 277,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 278,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 279,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 280,
+      "expected": "",
+      "recognized": "Ф",
+      "status": "extra"
+    },
+    {
+      "position": 281,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 282,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 283,
+      "expected": "",
+      "recognized": "Ч",
+      "status": "extra"
+    },
+    {
+      "position": 284,
+      "expected": "",
+      "recognized": "Ш",
+      "status": "extra"
+    },
+    {
+      "position": 285,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 286,
+      "expected": "",
+      "recognized": "Ъ",
+      "status": "extra"
+    },
+    {
+      "position": 287,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 288,
+      "expected": "",
+      "recognized": "Ь",
+      "status": "extra"
+    },
+    {
+      "position": 289,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 290,
+      "expected": "",
+      "recognized": "Ю",
+      "status": "extra"
+    },
+    {
+      "position": 291,
+      "expected": "",
+      "recognized": "Я",
+      "status": "extra"
+    },
+    {
+      "position": 292,
+      "expected": "",
+      "recognized": "-",
+      "status": "extra"
+    },
+    {
+      "position": 293,
+      "expected": "",
+      "recognized": "1",
+      "status": "extra"
+    },
+    {
+      "position": 294,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 295,
+      "expected": "",
+      "recognized": "7",
+      "status": "extra"
+    },
+    {
+      "position": 296,
+      "expected": "",
+      "recognized": "4",
+      "status": "extra"
+    },
+    {
+      "position": 297,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 298,
+      "expected": "",
+      "recognized": "9",
+      "status": "extra"
+    },
+    {
+      "position": 299,
+      "expected": "",
+      "recognized": "0",
+      "status": "extra"
+    },
+    {
+      "position": 300,
+      "expected": "",
+      "recognized": "8",
+      "status": "extra"
+    },
+    {
+      "position": 301,
+      "expected": "",
+      "recognized": "9",
+      "status": "extra"
+    },
+    {
+      "position": 302,
+      "expected": "",
+      "recognized": "о",
+      "status": "extra"
+    },
+    {
+      "position": 303,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 304,
+      "expected": "",
+      "recognized": "Б",
+      "status": "extra"
+    },
+    {
+      "position": 305,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 306,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 307,
+      "expected": "",
+      "recognized": "Д",
+      "status": "extra"
+    },
+    {
+      "position": 308,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 309,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 310,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 311,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 312,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 313,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 314,
+      "expected": "",
+      "recognized": "К",
+      "status": "extra"
+    },
+    {
+      "position": 315,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 316,
+      "expected": "",
+      "recognized": "М",
+      "status": "extra"
+    },
+    {
+      "position": 317,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 318,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 319,
+      "expected": "",
+      "recognized": "Й",
+      "status": "extra"
+    },
+    {
+      "position": 320,
+      "expected": "",
+      "recognized": "-",
+      "status": "extra"
+    },
+    {
+      "position": 321,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 322,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 323,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 324,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 325,
+      "expected": "",
+      "recognized": "Ф",
+      "status": "extra"
+    },
+    {
+      "position": 326,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 327,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 328,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 329,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 330,
+      "expected": "",
+      "recognized": "Щ",
+      "status": "extra"
+    },
+    {
+      "position": 331,
+      "expected": "",
+      "recognized": "Ъ",
+      "status": "extra"
+    },
+    {
+      "position": 332,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 333,
+      "expected": "",
+      "recognized": "Ь",
+      "status": "extra"
+    },
+    {
+      "position": 334,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 335,
+      "expected": "",
+      "recognized": "С",
+      "status": "extra"
+    },
+    {
+      "position": 336,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 337,
+      "expected": "",
+      "recognized": "Б",
+      "status": "extra"
+    },
+    {
+      "position": 338,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 339,
+      "expected": "",
+      "recognized": "Л",
+      "status": "extra"
+    },
+    {
+      "position": 340,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 341,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 342,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 343,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 344,
+      "expected": "",
+      "recognized": "В",
+      "status": "extra"
+    },
+    {
+      "position": 345,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 346,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 347,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 348,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 349,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 350,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 351,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 352,
+      "expected": "",
+      "recognized": "Ц",
+      "status": "extra"
+    },
+    {
+      "position": 353,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 354,
+      "expected": "",
+      "recognized": "В",
+      "status": "extra"
+    },
+    {
+      "position": 355,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 356,
+      "expected": "",
+      "recognized": "В",
+      "status": "extra"
+    },
+    {
+      "position": 357,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 358,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 359,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 360,
+      "expected": "",
+      "recognized": "М",
+      "status": "extra"
+    },
+    {
+      "position": 361,
+      "expected": "",
+      "recognized": "и",
+      "status": "extra"
+    },
+    {
+      "position": 362,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 363,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 364,
+      "expected": "",
+      "recognized": "4",
+      "status": "extra"
+    },
+    {
+      "position": 365,
+      "expected": "",
+      "recognized": "2",
+      "status": "extra"
+    },
+    {
+      "position": 366,
+      "expected": "",
+      "recognized": "9",
+      "status": "extra"
+    },
+    {
+      "position": 367,
+      "expected": "",
+      "recognized": "В",
+      "status": "extra"
+    },
+    {
+      "position": 368,
+      "expected": "",
+      "recognized": "Б",
+      "status": "extra"
+    },
+    {
+      "position": 369,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 370,
+      "expected": "",
+      "recognized": "Г",
+      "status": "extra"
+    },
+    {
+      "position": 371,
+      "expected": "",
+      "recognized": "Д",
+      "status": "extra"
+    },
+    {
+      "position": 372,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 373,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 374,
+      "expected": "",
+      "recognized": "Ж",
+      "status": "extra"
+    },
+    {
+      "position": 375,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 376,
+      "expected": "",
+      "recognized": "И",
+      "status": "extra"
+    },
+    {
+      "position": 377,
+      "expected": "",
+      "recognized": "Й",
+      "status": "extra"
+    },
+    {
+      "position": 378,
+      "expected": "",
+      "recognized": "К",
+      "status": "extra"
+    },
+    {
+      "position": 379,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 380,
+      "expected": "",
+      "recognized": "М",
+      "status": "extra"
+    },
+    {
+      "position": 381,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 382,
+      "expected": "",
+      "recognized": "О",
+      "status": "extra"
+    },
+    {
+      "position": 383,
+      "expected": "",
+      "recognized": "Й",
+      "status": "extra"
+    },
+    {
+      "position": 384,
+      "expected": "",
+      "recognized": "Р",
+      "status": "extra"
+    },
+    {
+      "position": 385,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 386,
+      "expected": "",
+      "recognized": "Т",
+      "status": "extra"
+    },
+    {
+      "position": 387,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 388,
+      "expected": "",
+      "recognized": "У",
+      "status": "extra"
+    },
+    {
+      "position": 389,
+      "expected": "",
+      "recognized": "Х",
+      "status": "extra"
+    },
+    {
+      "position": 390,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 391,
+      "expected": "",
+      "recognized": "Ч",
+      "status": "extra"
+    },
+    {
+      "position": 392,
+      "expected": "",
+      "recognized": "Е",
+      "status": "extra"
+    },
+    {
+      "position": 393,
+      "expected": "",
+      "recognized": "Н",
+      "status": "extra"
+    },
+    {
+      "position": 394,
+      "expected": "",
+      "recognized": "Ы",
+      "status": "extra"
+    },
+    {
+      "position": 395,
+      "expected": "",
+      "recognized": "Ь",
+      "status": "extra"
+    },
+    {
+      "position": 396,
+      "expected": "",
+      "recognized": "3",
+      "status": "extra"
+    },
+    {
+      "position": 397,
+      "expected": "",
+      "recognized": "Я",
+      "status": "extra"
+    },
+    {
+      "position": 398,
+      "expected": "",
+      "recognized": "-",
+      "status": "extra"
+    },
+    {
+      "position": 399,
+      "expected": "",
+      "recognized": "А",
+      "status": "extra"
+    },
+    {
+      "position": 400,
+      "expected": "",
+      "recognized": "а",
+      "status": "extra"
+    },
+    {
+      "position": 401,
+      "expected": "",
+      "recognized": "в",
+      "status": "extra"
+    },
+    {
+      "position": 402,
+      "expected": "",
+      "recognized": "и",
+      "status": "extra"
+    }
+  ],
+  "letters_accuracy": {
+    "total": 33,
+    "correct": 0,
+    "accuracy": 0.0,
+    "recognized_chars": "ФЗПНЕНЫЕЦЕЕХИИКАМНОПРЕТРХННШШУЫЬЗ",
+    "expected_chars": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+  },
+  "digits_accuracy": {
+    "total": 10,
+    "correct": 0,
+    "accuracy": 0.0,
+    "recognized_chars": "5274567852",
+    "expected_chars": "0123456789"
+  }
+}

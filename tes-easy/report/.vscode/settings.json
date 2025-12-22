@@ -1,0 +1,52 @@
+{
+  // Основные инструменты сборки
+  "latex-workshop.latex.tools": [
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-synctex=1",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+        "%DOCFILE%"
+      ]
+    }
+  ],
+
+  // Последовательность сборки
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex ➞ biber ➞ pdflatex ×2",
+      "tools": [
+        "pdflatex",
+        "biber",
+        "pdflatex"
+      ]
+    }
+  ],
+
+  // Куда складывать временные файлы (по желанию)
+  "latex-workshop.latex.outDir": "build",
+
+  // Автосборка при сохранении
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Просмотр PDF
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.invert": 0, // можно 0 или 1 для инверсии
+  "latex-workshop.synctex.afterBuild.enabled": true,
+
+  // Отключаем предупреждения об устаревших пакетах
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": false,
+
+  // Кодировка
+  "files.encoding": "utf8"
+}

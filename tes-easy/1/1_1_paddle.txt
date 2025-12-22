@@ -1,0 +1,8 @@
+Метод: roi_offset50
+Score: 29
+
+Распознанный текст:
+n a o t o e e e e e e e i e e
+
+Разделенные строки:
+ 0: n a o t o e e e e e e e i e e
