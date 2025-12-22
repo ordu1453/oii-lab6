@@ -8,16 +8,14 @@ import pandas as pd
 from paddleocr import PaddleOCR
 import json
 
-# Инициализация PaddleOCR
 ocr = PaddleOCR(
     text_recognition_model_name="cyrillic_PP-OCRv5_mobile_rec",
     use_doc_orientation_classify=False,
     use_doc_unwarping=False,
     use_textline_orientation=True,
-    device="cpu",  # Измените на "gpu:0" если есть GPU
+    device="cpu",  
 )
 
-# Папка с изображениями
 FOLDER_PATH = "1"
 
 def crop_by_marks(image, offset=50):
@@ -32,22 +30,17 @@ def crop_by_marks(image, offset=50):
         cropped_image: обрезанное изображение
         mark_coords: координаты найденной метки (x, y, w, h)
     """
-    # Создаем копию изображения
     original = image.copy()
     
-    # Конвертируем в grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     h, w = gray.shape
     
-    # Бинаризуем изображение
     _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     
-    # Находим контуры
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     marks = []
     
-    # Определяем область поиска для верхней левой метки
     search_area_w = w // 2
     search_area_h = h // 2
     
@@ -55,9 +48,7 @@ def crop_by_marks(image, offset=50):
         x, y, cw, ch = cv2.boundingRect(cnt)
         area = cv2.contourArea(cnt)
         
-        # Фильтр по размеру
         if 200 < area < 3000:
-            # Фильтр по положению: только в верхней левой части
             if x < search_area_w and y < search_area_h:
                 marks.append((x, y, cw, ch, area))
     
@@ -67,14 +58,11 @@ def crop_by_marks(image, offset=50):
     
     marks.sort(key=lambda m: (m[1], m[0]))
     
-    # Выбираем самую верхнюю левую метку
     x, y, mark_w, mark_h, area = marks[0]
     
-    # Вычисляем координаты для обрезки
     crop_start_x = x + mark_w + offset
     crop_start_y = y + mark_h + offset
     
-    # Обрезаем изображение
     roi = image[crop_start_y:, crop_start_x:]
     
     if roi.size == 0:
@@ -109,14 +97,12 @@ def paddleocr_to_text(result):
     if result is None or len(result) == 0:
         return lines
     
-    # Извлекаем все текстовые блоки
     all_boxes = []
     for line in result:
         boxes = line[0]
         text = line[1][0]
         confidence = line[1][1]
         
-        # Вычисляем центральную y-координату bounding box
         y_center = np.mean([point[1] for point in boxes])
         
         all_boxes.append({
@@ -126,11 +112,9 @@ def paddleocr_to_text(result):
             'box': boxes
         })
     
-    # Сортируем по y-координате
     all_boxes.sort(key=lambda x: x['y_center'])
     
-    # Группируем близкие строки
-    line_threshold = 20  # Порог для группировки строк
+    line_threshold = 20  
     current_line_items = []
     
     for item in all_boxes:
@@ -140,16 +124,13 @@ def paddleocr_to_text(result):
         elif abs(item['y_center'] - current_y) < line_threshold:
             current_line_items.append(item)
         else:
-            # Сортируем элементы в строке по x-координате
             current_line_items.sort(key=lambda x: np.mean([point[0] for point in x['box']]))
             line_text = ' '.join([item['text'] for item in current_line_items])
             lines.append(line_text.strip())
             
-            # Начинаем новую строку
             current_line_items = [item]
             current_y = item['y_center']
     
-    # Добавляем последнюю строку
     if current_line_items:
         current_line_items.sort(key=lambda x: np.mean([point[0] for point in x['box']]))
         line_text = ' '.join([item['text'] for item in current_line_items])
@@ -181,7 +162,6 @@ def process_image(image_path, save_intermediate=False, save_json=False):
         print("Ошибка: ROI пустой, используем оригинальное изображение")
         roi = img.copy()
     
-    # Предобработка (опционально, PaddleOCR хорошо работает и без нее)
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
     gray = cv2.blur(gray, (9, 9))
     _, thresh = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
@@ -190,7 +170,6 @@ def process_image(image_path, save_intermediate=False, save_json=False):
         cv2.imwrite(f"debug/{base_name}_binary_paddle.png", thresh)
         cv2.imwrite(f"debug/{base_name}_roi_paddle.png", roi)
     
-    # Сохраняем временное изображение для PaddleOCR
     temp_path = f"temp_{os.path.basename(image_path)}"
     cv2.imwrite(temp_path, roi)
     
@@ -201,7 +180,6 @@ def process_image(image_path, save_intermediate=False, save_json=False):
         #     res.save_to_img("output")  
         #     res.save_to_json("output")
 
-        # Извлекаем все распознанные тексты
         all_texts = []
         for res in result:
             if hasattr(res, 'rec_texts'):
@@ -209,35 +187,29 @@ def process_image(image_path, save_intermediate=False, save_json=False):
             elif 'rec_texts' in res:
                 all_texts.extend(res['rec_texts'])
 
-        # Выводим все тексты
         for text in all_texts:
             print(text)
 
-        # Или объединяем в одну строку
         full_text = "\n".join(all_texts)
         print("\nПолный текст:")
         print(full_text)
         
         raw_text = full_text
 
-        # Разбиваем на строки (lines)
         lines = full_text.split('\n')
         
     finally:
-        # Удаляем временный файл
         if os.path.exists(temp_path):
             os.remove(temp_path)
     
-    # Сохраняем распознанный текст
     text_file = os.path.splitext(image_path)[0] + "_paddle.txt"
     with open(text_file, "w", encoding="utf-8") as file:
         file.write(raw_text)
     
     print(f"Распознано строк PaddleOCR: {len(lines)}")
-    for i, line in enumerate(lines[:5]):  # Показываем первые 5 строк для отладки
+    for i, line in enumerate(lines[:5]):  
         print(f"  Строка {i}: {line}")
     
-    # Эталонные строки
     expected_lines = []
     expected_lines.append("Задание указано на доске. Подписывать бланк НЕ требуется")
     
@@ -249,7 +221,6 @@ def process_image(image_path, save_intermediate=False, save_json=False):
         expected_lines.append("АБВГДЕЁЖЗИЙ КЛМНОПРСТ УФХЦЧШЩЪЫЬЭ")
         expected_lines.append("ЮЯ-0123456789")
     
-    # Вычисление метрик
     acc_list, cer_list, wer_list = [], [], []
     line_results = []
     
@@ -282,7 +253,6 @@ def process_image(image_path, save_intermediate=False, save_json=False):
         
         print(f"Строка {i:2d} | ACC: {acc:.3f} | CER: {cer_val:.3f} | WER: {wer_val:.3f}")
     
-    # Вычисляем средние метрики для файла
     file_metrics = {
         'file': os.path.basename(image_path),
         'avg_accuracy': np.mean(acc_list),
@@ -303,11 +273,9 @@ def process_image(image_path, save_intermediate=False, save_json=False):
     return file_metrics
 
 def main():
-    # Получаем список всех файлов X_Y.png в папке
     pattern = os.path.join(FOLDER_PATH, "*_*.png")
     image_files = glob.glob(pattern)
     
-    # Фильтруем только файлы с паттерном X_Y.png (где X и Y - числа)
     filtered_files = []
     for file in image_files:
         basename = os.path.basename(file)
@@ -323,13 +291,11 @@ def main():
         print(f"Файлы с паттерном X_Y.png не найдены в папке '{FOLDER_PATH}'")
         return
     
-    # Сортируем файлы по X и Y
     filtered_files.sort(key=lambda x: (
         int(os.path.splitext(os.path.basename(x))[0].split('_')[0]),
         int(os.path.splitext(os.path.basename(x))[0].split('_')[1])
     ))
     
-    # Обрабатываем все файлы
     all_metrics = []
     all_line_results = []
     
@@ -343,7 +309,6 @@ def main():
         print("Не удалось обработать ни одного файла")
         return
     
-    # Выводим общую статистику
     print("\n" + "="*80)
     print("ОБЩАЯ СТАТИСТИКА ПО ВСЕМ ФАЙЛАМ (PaddleOCR)")
     print("="*80)

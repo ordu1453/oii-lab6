@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.12)  24 NOV 2025 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.12)  22 DEC 2025 21:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**e:/masterUI7/OII/sch-lab/report/report.tex
-(e:/masterUI7/OII/sch-lab/report/report.tex
+**e:/masterUI7/OII/oii-lab6/report/report.tex
+(e:/masterUI7/OII/oii-lab6/report/report.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/bmstu\bmstu.cls
@@ -1637,7 +1637,7 @@ Package hyperref Info: Link coloring OFF on input line 18.
 \@outlinefile=\write5
 \openout5 = `report.out'.
 
-<bmstu-logo.pdf, id=22, 500.95255pt x 591.38255pt>
+<bmstu-logo.pdf, id=34, 500.95255pt x 591.38255pt>
 File: bmstu-logo.pdf Graphic file (type pdf)
 <use bmstu-logo.pdf>
 Package pdftex.def Info: bmstu-logo.pdf  used on input line 28.
@@ -1692,32 +1692,225 @@ LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
 \openout2 = `01-theoretical.aux'.
 
  (01-theoretical.tex
-{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 1.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 2.
+ (C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T2A).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
 
 [3
 
+
+]
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 1.
+)
+
+[4
 
 ]
 \openout2 = `02-practical.aux'.
 
  (02-practical.tex
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 2.
+<inc/img/poz_sign.png, id=74, 183.68625pt x 193.47281pt>
+File: inc/img/poz_sign.png Graphic file (type png)
+<use inc/img/poz_sign.png>
+Package pdftex.def Info: inc/img/poz_sign.png  used on input line 16.
+(pdftex.def)             Requested size: 234.73524pt x 247.25761pt.
 
-
-[4
-
-
-
-
-])
 
 [5
+
+
+
+
+ <./inc/img/poz_sign.png>]
+<inc/img/ocr10.png, id=86, 4962.54pt x 3506.09875pt>
+File: inc/img/ocr10.png Graphic file (type png)
+<use inc/img/ocr10.png>
+Package pdftex.def Info: inc/img/ocr10.png  used on input line 35.
+(pdftex.def)             Requested size: 375.57782pt x 265.3pt.
+
+
+[6 <./inc/img/ocr10.png (PNG copy)>]
+<inc/img/1_10_bboxes_easyocr.png, id=96, 2260.445pt x 3114.63625pt>
+File: inc/img/1_10_bboxes_easyocr.png Graphic file (type png)
+<use inc/img/1_10_bboxes_easyocr.png>
+Package pdftex.def Info: inc/img/1_10_bboxes_easyocr.png  used on input line 51.
+(pdftex.def)             Requested size: 375.57782pt x 517.45723pt.
+
+
+[7 <./inc/img/1_10_bboxes_easyocr.png (PNG copy)>]
+<inc/img/binary.png, id=104, 2260.445pt x 3109.6175pt>
+File: inc/img/binary.png Graphic file (type png)
+<use inc/img/binary.png>
+Package pdftex.def Info: inc/img/binary.png  used on input line 60.
+(pdftex.def)             Requested size: 234.73524pt x 322.88963pt.
+
+Overfull \hbox (8.16583pt too wide) in paragraph at lines 68--78
+ [][] 
+ []
+
+
+
+[8 <./inc/img/binary.png (PNG copy)>])
+
+[9
 
 ]
 \openout2 = `03-appendix.aux'.
 
- (03-appendix.tex) 
+ (03-appendix.tex
+pdfTeX warning (ext4): destination with the same identifier (name{appendixchapters.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3 ...r{Код программы для EasyOCR}
+                                                  
+ПРИЛОЖЕНИЕ \CYRA .
+(C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 7.
+Package csquotes Info: Input encoding change on input line 7.
+ (C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+LaTeX Encoding Info:    Ignoring declaration for text command \textdegree (encoding ?) on input line 44.
+) (C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-utf8.def
+File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
+) (C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-koi8-r.def
+File: se-koi8-r.def 2019/11/29 v1.12 stringenc: KOI8-R
+)
+
+[10
+
+
+
+
+]
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+Overfull \hbox (34.29147pt too wide) in paragraph at lines 329--330
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (26.88321pt too wide) in paragraph at lines 330--331
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+
+[19]
+
+[20]
+
+[21]
+
+[22]
+pdfTeX warning (ext4): destination with the same identifier (name{appendixchapters.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9 ...�д программы для TesseractOCR}
+                                                  
+ПРИЛОЖЕНИЕ \CYRB .
+Package csquotes Info: Input encoding change on input line 13.
+(C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+LaTeX Encoding Info:    Ignoring declaration for text command \textdegree (encoding ?) on input line 44.
+)
+Overfull \hbox (54.29147pt too wide) in paragraph at lines 10--12
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+
+[23
+
+]
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+Overfull \hbox (34.29147pt too wide) in paragraph at lines 217--218
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (26.88321pt too wide) in paragraph at lines 218--219
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+
+[28]
+
+[29]
+
+[30]
+
+[31]
+ПРИЛОЖЕНИЕ \CYRV .
+Package csquotes Info: Input encoding change on input line 19.
+(C:\Users\ordum\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+LaTeX Encoding Info:    Ignoring declaration for text command \textdegree (encoding ?) on input line 44.
+)
+
+[32
+
+]
+
+[33]
+
+[34]
+
+[35]
+
+[36]
+
+[37]
+
+[38]
+Overfull \hbox (34.29147pt too wide) in paragraph at lines 295--296
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+Overfull \hbox (26.88321pt too wide) in paragraph at lines 296--297
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+
+
+[39]
+
+[40]
+
+[41])
+
+[42] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (report.aux (01-theoretical.aux) (02-practical.aux) (03-appendix.aux))
  ***********
@@ -1730,23 +1923,23 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 08964A70ECF398C107F9BC4839E304DA;826.
+(rerunfilecheck)             Checksum: 41B2C7EA42D9EA0DDF2E389615BC1054;1608.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50705 strings out of 468130
- 1114876 string characters out of 5430632
- 2302044 words of memory out of 5000000
- 78478 multiletter control sequences out of 15000+600000
- 641470 words of font info for 79 fonts, out of 8000000 for 9000
+ 53001 strings out of 468130
+ 1152438 string characters out of 5430632
+ 2407919 words of memory out of 5000000
+ 79550 multiletter control sequences out of 15000+600000
+ 643224 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 126i,19n,129p,1231b,3209s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1728.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\lati1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm0800.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1200.pk>
-Output written on report.pdf (5 pages, 208609 bytes).
+ 126i,19n,129p,1257b,3209s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt1200.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1000.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi720\tcrm1200.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1728.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\lati1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm0800.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1440.pk> <C:\Users\ordum\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1200.pk>
+Output written on report.pdf (42 pages, 10298312 bytes).
 PDF statistics:
- 269 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 7730 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2169 PDF objects out of 2487 (max. 8388607)
+ 1216 named destinations out of 1440 (max. 500000)
+ 9822 words of extra memory for PDF output out of 10000 (max. 10000000)
 
